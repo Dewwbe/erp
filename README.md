@@ -1,193 +1,211 @@
-# Mini ERP System (ASP.NET Core + MySQL + React)
+📌 Mini ERP System
 
-A simple **Mini ERP system** built using:
+ASP.NET Core Web API + MySQL + React
 
-- **ASP.NET Core Web API (.NET 9)**
-- **MySQL**
-- **JWT Authentication**
-- **React (Frontend)**
-- **Swagger (API testing & documentation)**
+A full-stack Mini ERP system built to demonstrate real-world enterprise application concepts such as authentication, inventory management, and invoicing.
 
-This project demonstrates a basic ERP workflow including:
-- User Registration & Login
-- Role-based authentication (JWT)
-- Items (Inventory) management
-- Sales Invoices with invoice lines
-- Stock updates on invoicing
+✨ Key Features
 
----
+🔐 JWT-based Authentication (Register & Login)
 
-## 🚀 Tech Stack
+👤 Secure user profile endpoint
 
-### Backend
-- ASP.NET Core Web API (.NET 9)
-- MySQL
-- JWT Authentication
-- Swagger / OpenAPI
-- MySqlConnector
+📦 Inventory (Items) Management
 
-### Frontend
-- React
-- Axios
-- React Router
+🧾 Sales Invoicing with Line Items
 
----
+📉 Automatic stock reduction on invoicing
 
-## 📂 Folder Structure
+📘 API documentation using Swagger
 
+🛠️ Tools & Technologies
+Backend
+
+ASP.NET Core Web API (.NET 9)
+
+C#
+
+MySQL
+
+JWT Authentication
+
+Swagger / OpenAPI
+
+MySqlConnector
+
+Frontend
+
+React
+
+JavaScript
+
+Axios
+
+React Router
+
+Development Tools
+
+Visual Studio Code
+
+.NET CLI
+
+Node.js & npm
+
+Git
+
+📂 Project Folder Structure
 erpdotnet/
 ├── MiniErp.Api/
-│ ├── Controllers/
-│ │ ├── AuthController.cs
-│ │ ├── UsersController.cs
-│ │ ├── ItemsController.cs
-│ │ └── InvoicesController.cs
-│ │
-│ ├── Models/
-│ │ ├── AuthDtos.cs
-│ │ ├── ItemDtos.cs
-│ │ └── InvoiceDtos.cs
-│ │
-│ ├── Properties/
-│ │ └── launchSettings.json
-│ │
-│ ├── Program.cs
-│ ├── appsettings.json
-│ └── MiniErp.Api.csproj
+│   ├── Controllers/
+│   │   ├── AuthController.cs
+│   │   ├── UsersController.cs
+│   │   ├── ItemsController.cs
+│   │   └── InvoicesController.cs
+│   │
+│   ├── Models/
+│   │   ├── AuthDtos.cs
+│   │   ├── ItemDtos.cs
+│   │   └── InvoiceDtos.cs
+│   │
+│   ├── Properties/
+│   │   └── launchSettings.json
+│   │
+│   ├── Program.cs
+│   ├── appsettings.json
+│   └── MiniErp.Api.csproj
 │
 ├── mini-erp-ui/
-│ ├── src/
-│ │ ├── api.js
-│ │ ├── App.js
-│ │ ├── Login.js
-│ │ ├── Register.js
-│ │ ├── Me.js
-│ │ └── index.js
-│ │
-│ ├── assets/
-│ │ ├── ss1.jpg <-- Swagger screenshot
-│ │ └── ss2.jpg <-- Swagger authorize screenshot
-│ │
-│ └── package.json
+│   ├── src/
+│   │   ├── api.js
+│   │   ├── App.js
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   ├── Me.js
+│   │   └── index.js
+│   │
+│   ├── assets/
+│   │   ├── ss1.jpg   ← Swagger API overview
+│   │   └── ss2.jpg   ← Swagger JWT authorization
+│   │
+│   └── package.json
 │
 └── README.md
 
-
----
-
-## 🗄️ Database Setup (MySQL)
-
-Create the database and tables:
-
-```sql
-CREATE DATABASE mini_erp CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+🗄️ Database Setup (MySQL)
+CREATE DATABASE mini_erp;
 USE mini_erp;
 
 CREATE TABLE erp_users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(200) NOT NULL UNIQUE,
-  password_hash VARCHAR(255) NOT NULL,
-  password_salt VARCHAR(255) NOT NULL,
+  email VARCHAR(200) UNIQUE,
+  password_hash VARCHAR(255),
+  password_salt VARCHAR(255),
   full_name VARCHAR(200),
-  role VARCHAR(50) DEFAULT 'Clerk',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  role VARCHAR(50) DEFAULT 'Clerk'
 );
 
 CREATE TABLE items (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  sku VARCHAR(50) NOT NULL UNIQUE,
-  name VARCHAR(200) NOT NULL,
-  unit_price DECIMAL(10,2) NOT NULL,
-  qty_on_hand INT NOT NULL,
-  is_active TINYINT(1) DEFAULT 1,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  sku VARCHAR(50) UNIQUE,
+  name VARCHAR(200),
+  unit_price DECIMAL(10,2),
+  qty_on_hand INT
 );
 
 CREATE TABLE sales_invoices (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  invoice_no VARCHAR(30) NOT NULL UNIQUE,
-  customer_name VARCHAR(200) NOT NULL,
-  invoice_date DATE NOT NULL,
-  total DECIMAL(12,2) NOT NULL,
-  created_by_email VARCHAR(200),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  invoice_no VARCHAR(30),
+  customer_name VARCHAR(200),
+  invoice_date DATE,
+  total DECIMAL(12,2),
+  created_by_email VARCHAR(200)
 );
 
 CREATE TABLE sales_invoice_lines (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  invoice_id INT NOT NULL,
-  item_id INT NOT NULL,
-  qty INT NOT NULL,
-  unit_price DECIMAL(10,2) NOT NULL,
-  line_total DECIMAL(12,2) NOT NULL,
-  FOREIGN KEY (invoice_id) REFERENCES sales_invoices(id) ON DELETE CASCADE,
-  FOREIGN KEY (item_id) REFERENCES items(id)
+  invoice_id INT,
+  item_id INT,
+  qty INT,
+  unit_price DECIMAL(10,2),
+  line_total DECIMAL(12,2)
 );
+
 ⚙️ Backend Configuration
+
 Edit MiniErp.Api/appsettings.json:
 
 {
   "ConnectionStrings": {
-    "MySql": "Server=localhost;Port=3306;Database=mini_erp;User=root;Password=YOUR_PASSWORD;"
+    "MySql": "Server=localhost;Database=mini_erp;User=root;Password=YOUR_PASSWORD;"
   },
   "Jwt": {
-    "Key": "CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_KEY",
+    "Key": "LONG_RANDOM_SECRET_KEY",
     "Issuer": "MiniErp",
     "Audience": "MiniErpClient",
     "ExpiresMinutes": 60
   }
 }
+
 ▶️ How to Run the Project
-1️⃣ Run Backend (ASP.NET Core)
+1️⃣ Start Backend
 cd MiniErp.Api
 dotnet run
-Backend will start at:
 
-http://localhost:5000
-Swagger UI:
 
-http://localhost:5000/swagger
-2️⃣ Run Frontend (React)
+API URL: http://localhost:5000
+
+Swagger: http://localhost:5000/swagger
+
+2️⃣ Start Frontend
 cd mini-erp-ui
 npm install
 npm start
-Frontend will start at:
 
-http://localhost:3000
-🧪 Testing the Backend with Swagger
+
+UI URL: http://localhost:3000
+
+🧪 API Testing with Swagger
 Swagger UI
-Open:
-
 http://localhost:5000/swagger
-Swagger Screenshots
+
+📸 Swagger Screenshots
+
 Swagger API Overview
+
 
 JWT Authorization in Swagger
 
+
 🔐 Authentication Flow
+
 Call POST /api/auth/register
 
-Or call POST /api/auth/login
+Or POST /api/auth/login
 
-Copy the returned JWT token
+Copy the JWT token
 
 Click Authorize in Swagger
 
 Paste:
 
 Bearer <JWT_TOKEN>
-You can now access protected endpoints
+
+
+Access protected APIs
 
 📦 Available API Endpoints
 Auth
+
 POST /api/auth/register
 
 POST /api/auth/login
 
 User
+
 GET /api/users/me 🔒
 
-Items (Inventory)
+Items
+
 GET /api/items
 
 POST /api/items
@@ -197,36 +215,39 @@ PUT /api/items/{id}
 DELETE /api/items/{id}
 
 Invoices
+
 POST /api/invoices
 
 GET /api/invoices/{id}
 
-🧠 ERP Flow Summary
-Register/Login user
+🧠 ERP Workflow Summary
 
-Create items (inventory)
+User registers/logs in
 
-Create invoice with items
+Items are created
+
+Invoice is generated
 
 Stock is reduced automatically
 
 Invoice total is calculated
 
 🔮 Future Enhancements
-Customers module
+
+Customers & suppliers
 
 Purchase orders
 
 Invoice listing & search
 
-Role-based authorization (Admin / Clerk)
+Role-based access (Admin / Clerk)
 
-UI pages for Items & Invoices
-
-Reporting & dashboards
+Reports & dashboards
 
 👨‍💻 Author
-Mini ERP Project – .NET + MySQL + React
-Built for learning and academic purposes.
+
+Mini ERP System
+ASP.NET Core + MySQL + React
+Academic / learning project
 
 
