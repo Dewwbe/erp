@@ -6,7 +6,6 @@ E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\erp.deps.json
 E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\erp.runtimeconfig.json
 E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\erp.dll
 E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\erp.pdb
-E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.OpenApi.dll
 E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\erp.csproj.AssemblyReference.cache
 E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\rpswa.dswa.cache.json
@@ -31,3 +30,15 @@ E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\refint\erp.dll
 E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\erp.pdb
 E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\erp.genruntimeconfig.cache
 E:\a_4th_yr\Interns\erpdotnet\erp\obj\Debug\net9.0\ref\erp.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\MySqlConnector.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\a_4th_yr\Interns\erpdotnet\erp\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

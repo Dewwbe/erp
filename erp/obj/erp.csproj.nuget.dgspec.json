@@ -51,13 +51,17 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[9.0.7, )"
+              "version": "[9.0.0, )"
             },
             "MySqlConnector": {
               "target": "Package",
-              "version": "[2.5.0, )"
+              "version": "[2.4.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
