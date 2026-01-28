@@ -159,6 +159,9 @@ Open Swagger UI:
 
 http://localhost:5000/swagger
 Swagger Screenshots
+![Swagger API Overview](assets/ss1.jpg)
+![Swagger JWT Authorization](assets/ss2.jpg)
+
 Swagger API Overview
 
 
